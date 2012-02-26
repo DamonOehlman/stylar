@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <script src="../stylar.js"></script>
+  <style type="text/css">
+  #test {
+      width: 100px;
+      height: 100px;
+      background: grey;
+  }
+  </style>
+</head>
+<body>
+    <div id="test"></div>
+    <script>
+    var element = document.getElementById('test');
+    console.log(stylar(element).get('background-color'));
+    stylar(element).set('background', 'red');
+    </script>
+</body>
+</html>
