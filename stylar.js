@@ -50,10 +50,19 @@ var stylar = (function() {
         }
         
         function setter(attr, val) {
-            var styleKey = knownKeys[attr] || sniffProperty(elements[0], attr);
+            if (typeof attr == 'object' && (! (attr instanceof String))) {
+                // if we have been passed an object, then iterate through the keys and update
+                // each of the found values
+                for (var key in attr) {
+                    setter(key, attr[key]);
+                }
+            }
+            else {
+                var styleKey = knownKeys[attr] || sniffProperty(elements[0], attr);
 
-            for (var ii = elements.length; ii--; ) {
-                elements[ii].style[styleKey] = val;
+                for (var ii = elements.length; ii--; ) {
+                    elements[ii].style[styleKey] = val;
+                }
             }
             
             return helpers;
