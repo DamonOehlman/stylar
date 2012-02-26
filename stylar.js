@@ -9,7 +9,7 @@ var stylar = (function() {
         getComputed = document.defaultView.getComputedStyle;
     }
         
-    function sniffKey(element, attribute) {
+    function sniffProperty(element, attribute) {
         var dashMatch, ii, prefix, prefixedAttr;
         
         // strip off css vendor prefixes
@@ -35,7 +35,7 @@ var stylar = (function() {
         return attribute;
     }
     
-    return function(elements, attribute, value) {
+    function _stylar(elements, attribute, value) {
         var helpers = { get: getter, set: setter };
         
         if (! Array.isArray(elements)) {
@@ -43,14 +43,14 @@ var stylar = (function() {
         }
         
         function getter(attr) {
-            var readKey = knownKeys[attr] || sniffKey(elements[0], attr),
+            var readKey = knownKeys[attr] || sniffProperty(elements[0], attr),
                 style = getComputed ? getComputed.call(document.defaultView, elements[0]) : elements[0].style;
                 
             return style[readKey];
         }
         
         function setter(attr, val) {
-            var styleKey = knownKeys[attr] || sniffKey(elements[0], attr);
+            var styleKey = knownKeys[attr] || sniffProperty(elements[0], attr);
 
             for (var ii = elements.length; ii--; ) {
                 elements[ii].style[styleKey] = val;
@@ -71,5 +71,9 @@ var stylar = (function() {
         else {
             return getter(attribute);
         }
-    };
+    }
+    
+    _stylar.sniffProperty = sniffProperty;
+    
+    return _stylar;
 })();
