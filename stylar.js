@@ -42,18 +42,15 @@ var stylar = (function() {
             elements = [elements];
         }
         
-        function getter(attr, opts) {
+        function getter(attr, ignoreComputed) {
             var readKey, style;
-            
-            // ensure we have options defined
-            opts = opts || {};
             
             // get the read key
             readKey = knownKeys[attr] || sniffProperty(elements[0], attr);
 
             // if we have the get computed function defined, and the opts.ignoreComputed is not set
             // then get the computed style fot eh element
-            if (getComputed && (! opts.ignoreComputed)) {
+            if (getComputed && (! ignoreComputed)) {
                 style = getComputed.call(document.defaultView, elements[0]);
             }
             // otherwise, just return the style element 

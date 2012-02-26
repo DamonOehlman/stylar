@@ -14,7 +14,13 @@ describe('setter tests', function() {
         expect(stylar(testTarget, 'width')).to.equal('200px');
     });
     
-    it('can reset the width to auto', function() {
-        stylar(testTarget, 'width', 'auto');
+    it('can reset the width to auto, and get non computed values', function() {
+        var element = stylar(testTarget);
+        
+        // update the width to auto
+        element.set('width', 'auto');
+        
+        expect(element.get('width')).to.not.equal('auto');
+        expect(element.get('width', true)).to.equal('auto');
     });
 });
