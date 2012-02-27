@@ -38,7 +38,7 @@ var stylar = (function() {
     function _stylar(elements, attribute, value) {
         var helpers = { get: getter, set: setter };
         
-        if (! Array.isArray(elements)) {
+        if (typeof elements.splice == 'undefined') {
             elements = [elements];
         }
         
