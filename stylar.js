@@ -38,9 +38,14 @@ var stylar = (function() {
     function _stylar(elements, attribute, value) {
         var helpers = { get: getter, set: setter };
         
-        if (typeof elements.splice == 'undefined') {
-            elements = [elements];
+        if (typeof elements == 'string' || elements instanceof String) {
+            elements = document.querySelectorAll(elements);
         }
+        // if we don't have a splice function, then we don't have an array
+        // make it one
+        else if (typeof elements.length == 'undefined') {
+            elements = [elements];
+        } // if..else
         
         function getter(attr, ignoreComputed) {
             var readKey, style;
