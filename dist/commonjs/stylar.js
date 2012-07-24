@@ -1,3 +1,6 @@
+
+
+
 var prefixes = ['ms', 'o', 'Moz', 'webkit', ''],
     knownKeys = {},
     getComputed = null,
@@ -100,4 +103,6 @@ function stylar(elements, attribute, value) {
 
 stylar.sniffProperty = sniffProperty;
 
-module.exports = stylar;
+if (typeof stylar != 'undefined') {
+    module.exports = stylar;
+}
