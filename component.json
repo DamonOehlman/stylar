@@ -1,0 +1,13 @@
+{
+  "name": "stylar",
+  "repo": "DamonOehlman/stylar",
+  "description": "Cross Browser CSS Style Helper",
+  "version": "0.1.5",
+  "keywords": [
+    "css"
+  ],
+  "main": "stylar.js",
+  "scripts": [
+    "stylar.js"
+  ]
+}

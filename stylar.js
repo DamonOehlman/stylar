@@ -1,6 +1,26 @@
+/* ~stylar~
+ * 
+ * Simple Object Query Language
+ * 
+ * -meta---
+ * version:    0.1.5
+ * builddate:  2012-10-30T04:14:02.461Z
+ * generator:  interleave@0.5.23
+ * 
+ * 
+ * 
+ */ 
 
-// req: 
-(function(glob) {
+// umdjs returnExports pattern: https://github.com/umdjs/umd/blob/master/returnExports.js
+(function (root, factory) {
+    if (typeof exports === 'object') {
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else {
+        root['stylar'] = factory();
+    }
+}(this, function () {
     var prefixes = ['ms', 'o', 'Moz', 'webkit', ''],
         knownKeys = {},
         getComputed = null,
@@ -103,7 +123,5 @@
     
     stylar.sniffProperty = sniffProperty;
     
-    if (typeof stylar != 'undefined') {
-        glob.stylar = stylar;
-    }
-}(this));
+    return typeof stylar != 'undefined' ? stylar : undefined;
+}));

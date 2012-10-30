@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
 build:
-	@interleave build --wrap
+	@interleave --output ./
 
 .PHONY: build
