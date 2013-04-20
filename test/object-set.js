@@ -1,5 +1,4 @@
-var expect = require('chai').expect,
-    testTarget = document.getElementById('mocha');
+var testTarget = document.body;
 
 describe('setter tests', function() {
     it('can update multiple elements with a single set call', function() {

@@ -1,5 +1,4 @@
-var expect = require('chai').expect,
-    testTarget = document.getElementById('mocha');
+var testTarget = document.body;
 
 describe('setter tests', function() {
     it('can update the background-color with a one shot call', function() {

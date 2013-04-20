@@ -1,11 +1,10 @@
-var expect = require('chai').expect,
-    testTarget = document.getElementById('mocha'),
+var testTarget = document.body,
     checkAttributes = [
         'top', 
         'left',
         'transform',
-        'transition',
-        'background',
+        'transition-duration',
+        'background-color',
         'background-image',
         '-webkit-transform',
         '-moz-transform'
@@ -14,7 +13,7 @@ var expect = require('chai').expect,
 describe('attribute search test', function() {
     checkAttributes.forEach(function(attribute) {
         it('can successfully retrieve the ' + attribute + ' attribute', function() {
-            expect(stylar(testTarget, attribute)).to.exist;
+            expect(stylar(testTarget, attribute)).to.be.ok();
         });
     });
 });
@@ -22,7 +21,7 @@ describe('attribute search test', function() {
 describe('attributes test (through the get interface', function() {
     checkAttributes.forEach(function(attribute) {
         it('can successfully retrieve the ' + attribute + ' attribute', function() {
-            expect(stylar(testTarget).get(attribute)).to.exist;
+            expect(stylar(testTarget).get(attribute)).to.be.ok();
         });
     });
 });
