@@ -6,8 +6,8 @@
   "keywords": [
     "css"
   ],
-  "main": "stylar.js",
+  "main": "index.js",
   "scripts": [
-    "stylar.js"
+    "index.js"
   ]
 }
